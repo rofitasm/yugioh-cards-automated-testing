@@ -1,6 +1,5 @@
 package com.rofitasm.pages.yugioh;
 
-import com.rofitasm.data.YugiohData;
 import com.rofitasm.utils.UIUtility;
 import net.serenitybdd.core.pages.WebElementFacade;
 import org.openqa.selenium.support.FindBy;
@@ -32,8 +31,6 @@ public class YugiohCardDetailsPage extends UIUtility {
 
     @FindBy(xpath = "//div[@class='item_box_title']/b[text()='Card Text']/parent::*/parent::*")
     WebElementFacade cardEffectField;
-
-    YugiohData yugiohData;
 
     public String getCardName() {
         return filterAlphabets(cardNameField.getText().toLowerCase());

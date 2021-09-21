@@ -11,14 +11,14 @@ import io.cucumber.java.en.When;
 
 import static java.time.temporal.ChronoUnit.SECONDS;
 
-public class YugiohWebSteps {
+public class YugiohdbSteps {
 
+    public static YugiohData yugiohdbData;
+
+    YugiohHomePage yugiohHomePage;
     YugiohCardDetailsPage yugiohCardDetailsPage;
     YugiohSearchResultsPage yugiohSearchResultsPage;
     YugiohCardSearchPage yugiohCardSearchPage;
-    YugiohHomePage yugiohHomePage;
-
-    YugiohData yugiohData = new YugiohData();
 
     @Given("open yugioh web home page")
     public void openYugiohWebHomePage() {
@@ -31,8 +31,8 @@ public class YugiohWebSteps {
         yugiohHomePage.clickCardSearchMenu();
     }
 
-    @And("search {string} using search bar yugioh web")
-    public void searchYugiohUsingSearchBarYugiohWeb(String value) {
+    @And("search {string} using search bar yugiohdb")
+    public void searchYugiohUsingSearchBarYugiohdb(String value) {
         yugiohCardSearchPage.searchCard(value);
     }
 
@@ -41,15 +41,16 @@ public class YugiohWebSteps {
         yugiohSearchResultsPage.openDetailsCardPage();
     }
 
-    @When("get yugioh web data")
-    public void getYugiohWebData() {
-        yugiohData.setCardName("ok");
-        yugiohData.setAtk(yugiohCardDetailsPage.getAtk());
-        yugiohData.setDef(yugiohCardDetailsPage.getDef());
-        yugiohData.setAttribute(yugiohCardDetailsPage.getAttribute());
-        yugiohData.setCardEffects(yugiohCardDetailsPage.getCardEffects());
-        yugiohData.setCardType(yugiohCardDetailsPage.getCardType());
-        yugiohData.setMonsterType(yugiohCardDetailsPage.getMonsterType());
-        yugiohData.setRank(yugiohCardDetailsPage.getRank());
+    @When("get yugiohdb web data")
+    public void getYugiohdbWebData() {
+        yugiohdbData = new YugiohData();
+        yugiohdbData.setCardName(yugiohCardDetailsPage.getCardName());
+        yugiohdbData.setAtk(yugiohCardDetailsPage.getAtk());
+        yugiohdbData.setDef(yugiohCardDetailsPage.getDef());
+        yugiohdbData.setAttribute(yugiohCardDetailsPage.getAttribute());
+        yugiohdbData.setCardEffects(yugiohCardDetailsPage.getCardEffects());
+        yugiohdbData.setCardType(yugiohCardDetailsPage.getCardType());
+        yugiohdbData.setMonsterType(yugiohCardDetailsPage.getMonsterType());
+        yugiohdbData.setRank(yugiohCardDetailsPage.getRank());
     }
 }
